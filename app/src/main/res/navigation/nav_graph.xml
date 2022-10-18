@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/citiesList">
+
+
+    <fragment
+        android:id="@+id/citiesList"
+        android:name="com.josetorres.wbd_challenge_london_weather.ui.CitiesList"
+        android:label="CitiesList" >
+        <action
+            android:id="@+id/action_citiesList_to_cityDescription"
+            app:destination="@id/cityDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityDescription"
+        android:name="com.josetorres.wbd_challenge_london_weather.ui.CityDescription"
+        android:label="fragment_city_description"
+        tools:layout="@layout/fragment_city_description" />
+</navigation>

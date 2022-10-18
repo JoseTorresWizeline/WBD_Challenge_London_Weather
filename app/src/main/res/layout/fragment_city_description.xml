@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="weatherIcon"
+            type="Integer" />
+
+        <variable
+            name="nameCity"
+            type="String" />
+
+        <variable
+            name="cityTemperature"
+            type="com.josetorres.core.data.CityTemperature" />
+
+        <variable
+            name="cityWeather"
+            type="com.josetorres.core.data.CityWeather" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.CityDescription">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleX="1.7"
+            android:scaleY="1.7"
+            app:imageResource="@{weatherIcon}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/_1d" />
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{nameCity}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/icon"
+            tools:text="London" />
+
+        <TextView
+            android:id="@+id/title_weather_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Current Weather: "
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/weather"
+            app:layout_constraintTop_toBottomOf="@id/cityName" />
+
+        <TextView
+            android:id="@+id/weather"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cityWeather.description}"
+            app:layout_constraintLeft_toRightOf="@id/title_weather_desc"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_weather_desc" />
+
+        <TextView
+            android:id="@+id/title_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Current Temperature: "
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/temperature"
+            app:layout_constraintTop_toBottomOf="@id/title_weather_desc" />
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cityTemperature.temperature}"
+            app:layout_constraintLeft_toRightOf="@id/title_temperature"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_temperature" />
+
+        <TextView
+            android:id="@+id/title_max_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Max Temperature: "
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/max_temperature"
+            app:layout_constraintTop_toBottomOf="@id/title_temperature" />
+
+        <TextView
+            android:id="@+id/max_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cityTemperature.maxTemperature}"
+            app:layout_constraintLeft_toRightOf="@id/title_max_temperature"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_max_temperature" />
+
+        <TextView
+            android:id="@+id/title_min_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Min Temperature: "
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/min_temperature"
+            app:layout_constraintTop_toBottomOf="@id/title_max_temperature" />
+
+        <TextView
+            android:id="@+id/min_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cityTemperature.minTemperature}"
+            app:layout_constraintLeft_toRightOf="@id/title_min_temperature"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_min_temperature" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

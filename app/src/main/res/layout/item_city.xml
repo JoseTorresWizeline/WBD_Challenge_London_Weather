@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="cityData"
+            type="com.josetorres.core.api.ApiResponse" />
+
+        <variable
+            name="weather"
+            type="com.josetorres.core.data.CityWeather" />
+
+        <variable
+            name="weatherIcon"
+            type="Integer" />
+
+        <variable
+            name="clickListener"
+            type="com.josetorres.wbd_challenge_london_weather.ui.CityClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="10dp"
+        android:onClick="@{() -> clickListener.onClick(cityData)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:scaleX="1.7"
+                android:scaleY="1.7"
+                app:imageResource="@{weatherIcon}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/cityName"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/_1d" />
+
+            <TextView
+                android:id="@+id/cityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{cityData.cityName}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/icon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="London" />
+
+            <TextView
+                android:id="@+id/cityTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cityData.cityTemperature.temperature}"
+                app:layout_constraintLeft_toRightOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/cityName"
+                tools:text="20°C" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{weather.description}"
+                app:layout_constraintLeft_toRightOf="@id/cityTemperature"
+                app:layout_constraintTop_toBottomOf="@id/cityName"
+                tools:text="Sunny" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
