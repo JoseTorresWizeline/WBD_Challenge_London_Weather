@@ -40,5 +40,4 @@ class MainViewModel @Inject constructor(private val mRepository: Repository) : V
     companion object {
         private const val TAG = "MainViewModel"
     }
-
 }
